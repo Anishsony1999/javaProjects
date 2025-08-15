@@ -1,0 +1,28 @@
+<div class="appointment-booking-container">
+    <h2>Book an Appointment</h2>
+    <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
+      
+      <!-- Appointment Date -->
+      <div class="form-field">
+        <label for="appointmentDate">Appointment Date</label>
+        <input id="appointmentDate" name="appointmentDate" type="date" [(ngModel)]="appointment.date"  [min]="todayDate"  required />
+      </div>
+  
+      <!-- Appointment Time -->
+      <div class="form-field">
+        <label for="appointmentTime">Appointment Time</label>
+        <input id="appointmentTime" name="appointmentTime" type="time" [(ngModel)]="appointment.time" required />
+      </div>
+  
+      <!-- Reason for Appointment -->
+      <div class="form-field">
+        <label for="appointmentReason">Reason for Appointment</label>
+        <textarea id="appointmentReason" name="appointmentReason" [(ngModel)]="appointment.reason" rows="4" required></textarea>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="!appointmentForm.valid">Submit Appointment</button>
+
+    </form>
+  </div>
+  

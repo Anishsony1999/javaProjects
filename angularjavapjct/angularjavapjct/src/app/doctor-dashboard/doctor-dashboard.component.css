@@ -1,0 +1,65 @@
+/* General Styles */
+.container-fluid {
+    padding: 20px;
+  }
+  .dashboard-container {
+    background-color: #f8f9fa;
+  }
+
+  /* Header Card Styling */
+  .dashboard-header {
+    background: linear-gradient(to right, #4e73df, #224abe);
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  }
+
+  .doctor-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .doctor-info h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .doctor-info p {
+    margin: 0;
+  }
+
+  /* Logout Button Styling */
+  .logout-btn {
+    background-color: #f53b57;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .logout-btn:hover {
+    background-color: #ff4757;
+  }
+
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .doctor-avatar {
+      width: 60px;
+      height: 60px;
+    }
+    .doctor-info h2 {
+      font-size: 1.2rem;
+    }
+    .logout-btn {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
+  }

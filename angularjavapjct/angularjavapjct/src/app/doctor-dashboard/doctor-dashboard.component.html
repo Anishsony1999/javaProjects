@@ -1,0 +1,137 @@
+<html>
+<head>
+  
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container-fluid dashboard-container">
+    <!-- Header with Doctor Info and Logout Button -->
+    <div class="card dashboard-header">
+      <div class="row align-items-center">
+        <!-- Doctor Info Section -->
+        <div class="col-auto">
+          <img src="maleavatar.jpg" alt="Doctor Profile" class="doctor-avatar">
+        </div>
+        <div class="col">
+          <h2>Dr. John Doe</h2>
+          <p>Cardiologist</p>
+          <small>Experience: 10 years</small>
+        </div>
+        <!-- Logout Button -->
+        <div class="col-auto">
+          <button class="logout-btn" (click)="logout()">
+            Logout <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Dashboard Content -->
+    <div class="row dashboard-content">
+      <!-- Upcoming Appointments Table -->
+      <div class="col-md-12">
+        <div class="card appointments-card">
+          <h3 class="card-header">Upcoming Appointments</h3>
+          <div class="card-body">
+            <table class="table table-bordered table-hover">
+              <thead class="thead-light">
+                <tr>
+                  <th>Patient Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Appointment Reason</th>
+                  <th>Manage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let appointment of appointments">
+                  <td>{{ appointment.patientName }}</td>
+                  <td>{{ appointment.date | date: 'shortDate' }}</td>
+                  <td>{{ appointment.time }}</td>
+                  <td>{{ appointment.reason }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-primary" (click)="editAppointment(appointment)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteAppointment(appointment)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button class="btn btn-sm btn-secondary" (click)="viewAppointment(appointment)">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patient Details Table -->
+      <div class="col-md-12">
+        <div class="card patient-details-card">
+          <h3 class="card-header">Patient Details</h3>
+          <div class="card-body">
+            <table class="table table-bordered table-hover">
+              <thead class="thead-light">
+                <tr>
+                  <th>Patient Name</th>
+                  <th>Age</th>
+                  <th>Last Visit</th>
+                  <th>Next Appointment</th>
+                  <th>Manage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let patient of patients">
+                  <td>{{ patient.name }}</td>
+                  <td>{{ patient.age }}</td>
+                  <td>{{ patient.lastVisit | date: 'shortDate' }}</td>
+                  <td>{{ patient.nextAppointment | date: 'shortDate' }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-primary" (click)="editPatient(patient)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" (click)="deletePatient(patient)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button class="btn btn-sm btn-secondary" (click)="viewPatient(patient)">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Patient Details Modal -->
+      <div class="modal" tabindex="-1" role="dialog" *ngIf="selectedPatient">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Patient Details</h5>
+              <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p><strong>Full Name:</strong> {{ selectedPatient.name }}</p>
+              <p><strong>Email:</strong> {{ selectedPatient.email }}</p>
+              <p><strong>Phone Number:</strong> {{ selectedPatient.phoneNumber }}</p>
+              <p><strong>Blood Group:</strong> {{ selectedPatient.bloodGroup }}</p>
+              <p><strong>Registered Date:</strong> {{ selectedPatient.registeredDate | date: 'shortDate' }}</p>
+              <!-- Add other details here as needed -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+            </div>
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</body>
+</html>

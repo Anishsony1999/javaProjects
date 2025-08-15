@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>User Dashboard</title>
+</head>
+<body>
+  <div class="container-fluid dashboard-container">
+    <!-- Header with Doctor Info and Logout Button -->
+    <div class="card dashboard-header">
+      <div class="row align-items-center">
+        <!-- Doctor Info Section -->
+        <div class="col-auto">
+          <img src="profile1.jpg" alt="Doctor Profile" class="doctor-avatar">
+        </div>
+        <div class="col">
+          <h2>Anu Thomas</h2>
+          <!-- <p>Cardiologist</p>
+          <small>Experience: 10 years</small> -->
+        </div>
+        <!-- Logout Button -->
+        <div class="col-auto">
+          <button class="logout-btn" (click) = "logout()">
+            Logout <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="dashboard-container profile-section mx-auto">
+      <div class="profile-details">
+        <h2>Welcome, {{ patientName }}</h2>
+        <p class="intro-text">Here is an overview of your profile:</p>
+        <ul>
+          <li><strong>Full Name:</strong> {{ patientName }}</li>
+          <li><strong>Email:</strong> {{ patientEmail }}</li>
+          <li><strong>Phone Number:</strong> {{ patientPhone }}</li>
+          <li><strong>Blood Group:</strong> {{ patientBloodGroup }}</li>
+          <li><strong>Registered Date:</strong> {{ registeredDate | date }}</li>
+        </ul>
+      </div>
+
+      <!-- Appointment Buttons -->
+      <div class="appointment-buttons">
+        <button (click)="bookAppointment()" class="book-btn">Book Appointment</button>
+      </div>
+    </div>
+
+    <!-- Appointments Card -->
+    <div class="appointments-card mx-auto">
+      <h3>View All Appointments</h3>
+      <!-- <ul class="appointments-list">
+        <li *ngFor="let appointment of appointments">
+          <span>{{ appointment.date | date }} - {{ appointment.time }}</span>
+          <button (click)="viewAppointmentDetails(appointment)" class="view-details-btn">View Details</button>
+        </li>
+      </ul> -->
+
+      <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>Sl No</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Appointment Reason</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of appointments">
+            <td>{{ appointment.id }}</td>
+            <td>{{ appointment.date | date: 'shortDate' }}</td>
+            <td>{{ appointment.time }}</td>
+            <td>{{ appointment.reason }}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
