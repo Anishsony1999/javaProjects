@@ -1,0 +1,53 @@
+
+spring:
+  application:
+    name: email-app
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: anishsony1999@gmail.com
+    password: sils hfcn islz ursg
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+email:
+  reading:
+    host: imap.gmail.com
+    port: 993
+    username: anishsony1999@gmail.com
+    password: sils hfcn islz ursg
+    protocol: imaps
+    folder: INBOX
+    check-interval: 300000
+
+server:
+  port: 8081
+
+logging:
+  level:
+    com.example.emailapp: DEBUG
+    org.springframework.mail: DEBUG
